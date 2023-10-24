@@ -16,9 +16,9 @@ const CarCard = ({car}:{car:carDetails}) => {
   return (
     <Dialog>
       <DialogTrigger>
-    <div className={"flex flex-col w-64 p-2 h-96 justify-around"} >
+    <div className={"flex flex-col w-64 p-2 h-96 justify-around car-card"} >
       <div className="flex justify-between">
-        <p className="font-semibold">{car.make.toUpperCase()}</p>
+        <p className="font-semibold">{car.model.toUpperCase()}</p>
         <Button variant={"ghost"} className="text-3xl text-gray-400 hover:bg-transparent hover:text-transparent">
           <AiOutlineHeart/>
         </Button>

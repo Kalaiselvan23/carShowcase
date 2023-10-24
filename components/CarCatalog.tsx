@@ -11,7 +11,7 @@ const CarCatalog = () => {
       <div className="my-10 flex justify-between flex-wrap">
         <div>
         <ComboBoxSearch data={manufacturers}/>
-        {/* <ComboBoxSearch data={manufacturers}/> */}
+        {/* <ComboBoxSearrch data={manufacturers}/> */}
         </div>
         <div className="flex gap-3">
         <SelectOption data={yearsOfProduction} label={"Year"} />

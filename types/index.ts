@@ -4,6 +4,7 @@ export type transmisssionType="a"|"m";
 
 export type carDetails={
     city_mpg:number,
+    model:string,
     class:string,
     combination_mpg:number,
     cylinders:number,

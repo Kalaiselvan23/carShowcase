@@ -23,14 +23,12 @@ export function ComboBoxSearch({data}:{data:string[]}) {
   const [open, setOpen] = React.useState(false)
   const [value, setValue] = React.useState("")
   const {values,setParams}=React.useContext(FormContext);
-  React.useEffect(()=>{
-    if(value.length>0)
-    {
-      setParams({...values,make:value.toLowerCase()});
-    }
-    setParams({...values})
-  },[value,values,setParams])
-
+  React.useEffect(() => {
+    // Check if 'value' is not empty, and then update the 'year' field in 'setParams'
+    if (value !== "") {
+      setParams((prev) => ({ ...prev, make: value }));
+    } 
+  }, [value, setParams]); // Add 'value' and 'setParams' as dependencies
   return (
     <Popover open={open} onOpenChange={setOpen}>
       <PopoverTrigger asChild>

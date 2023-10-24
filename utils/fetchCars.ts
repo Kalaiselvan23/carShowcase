@@ -1,4 +1,4 @@
-import { driveType, fuelType, transmisssionType } from "@/types";
+import {fuelType } from "@/types";
 import { NextResponse } from "next/server";
 
 const BaseUrl = 'https://cars-by-api-ninjas.p.rapidapi.com/v1/cars';
@@ -6,8 +6,6 @@ type fetchProps={
     make:string,
     year:number,
     fuel_type:fuelType,
-    drive:driveType,
-    transmission:transmisssionType,
 }
 const fetchCars = async(params:fetchProps|null) => {
     const options={
@@ -17,7 +15,7 @@ const fetchCars = async(params:fetchProps|null) => {
 		    'X-RapidAPI-Host': 'cars-by-api-ninjas.p.rapidapi.com'
 	}
         }
-    const ParamUrl=`${BaseUrl}?make=${params?.make}&transmission=${params?.transmission}&year=${params?.year}&drive=${params?.drive}&eul_type=${params?.fuel_type}`
+    const ParamUrl=`${BaseUrl}?make=${params?.make}&year=${params?.year}&eul_type=${params?.fuel_type}&limit=30`
     const Url=params?ParamUrl:BaseUrl;
     const res=await fetch(Url,options);
     const cars=await res.json();
