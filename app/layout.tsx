@@ -1,6 +1,11 @@
 import type { Metadata } from 'next'
 import { Inter } from 'next/font/google'
 import './globals.css'
+import Image from 'next/image'
+import { Button } from '@/components/ui/button'
+import { footerLinks } from '@/_data/data'
+import { link } from 'fs'
+import Link from 'next/link'
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -13,10 +18,40 @@ export default function RootLayout({
   children,
 }: {
   children: React.ReactNode
-}) {
+}) 
+
+
+{
   return (
     <html lang="en">
-      <body className={inter.className}>{children}</body>
+      <body className={"relative overflow-x-hidden"}>
+        <nav className='flex justify-between p-2'>
+        <Image alt={"logo"} src={"/logo.svg"} width={120} height={30}/>
+          <Button className='bg-white rounded-lg font-bold text-blue-600'>
+            Signup
+          </Button>
+          </nav>
+        {children}
+        <footer className='border-t-2 border-gray-200 flex justify-between p-16 flex-wrap'>
+          <div className='mb-8'>
+        <Image alt={"logo"} src={"/logo.svg"} width={120} height={30} />
+        <p className='mt-3 text-sm'>Carhub 2023</p>
+        <p className='text-sm'>Copyrights reserved</p>
+          </div>
+          <div className='flex flex-wrap gap-16 mr-10'>
+            {(footerLinks as {title:string,links:[{title:string,url:string}]}[]).map(div=>{
+              return <div key={div.title} className='flex flex-col gap-3'>
+                <p className='font-semibold text-lg'>{div.title}</p>
+                {div.links.map((link)=>{
+                  return <Link key={link.title} href={link.url} className='text-gray-500'>
+                  {link.title}
+                  </Link>
+                })}
+              </div>
+            })}
+          </div>
+        </footer>
+        </body>
     </html>
   )
 }
